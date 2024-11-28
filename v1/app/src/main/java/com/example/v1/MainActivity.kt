@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        var c  = 9
         // Request notification permissions
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
