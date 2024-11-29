@@ -12,6 +12,7 @@ class RunningService: Service() {
         TODO("Not yet implemented")
         return null
     }
+
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         when(intent?.action) {
             Action.START.toString() -> {
@@ -31,6 +32,7 @@ class RunningService: Service() {
                 .setContentText("Elapsed time: 00:50")
                 .setOngoing(true)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
+                //.addAction(R.drawable.)
                 .build()
 
 
