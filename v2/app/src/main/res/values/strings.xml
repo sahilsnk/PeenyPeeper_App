@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">v2</string>
+    <string name="text_resourse">click the button</string>
+    <string name="application_name">Application Name</string>
+    <string name="notification_title">Notification Title</string>
+    <string name="notification_text">Notification Text</string>
+    <string name="bar_button">Bar Button</string>
+    <string name="foo_button">Foo Button</string>
+    <string name="todo">TODO</string>
+    <string name="spacer">" "</string>
 </resources>
