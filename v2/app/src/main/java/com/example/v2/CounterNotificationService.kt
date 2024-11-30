@@ -19,13 +19,13 @@ class CounterNotificationService(private val context : Context) {
         )
 
         // Intent for handling button click
-        val counterButtonIntent = Intent(context, CounterNotificationReceiver::class.java).apply {
+        val screenShotButtonIntent = Intent(context, CounterNotificationReceiver::class.java).apply {
             action = "ACTION_INCREMENT"
         }
-        val counterButtonPendingIntent = PendingIntent.getBroadcast(
+        val screenShotButtonPendingIntent = PendingIntent.getBroadcast(
             context,
             2,
-            counterButtonIntent,
+            screenShotButtonIntent,
             PendingIntent.FLAG_IMMUTABLE
         )
         val deleteButtonIntent = Intent(context, CounterNotificationReceiver::class.java).apply {
@@ -38,7 +38,7 @@ class CounterNotificationService(private val context : Context) {
             PendingIntent.FLAG_IMMUTABLE
         )
         val cloudButtonIntent = Intent(context, CounterNotificationReceiver::class.java).apply {
-            action = "ACTION_STORE"
+            action = "ACTION_INCREMENT"
         }
         val cloudButtonPendingIntent = PendingIntent.getBroadcast(
             context,
@@ -54,7 +54,7 @@ class CounterNotificationService(private val context : Context) {
         remoteViews.setTextViewText(R.id.textViewCounter, "Counter: $counter")
 
         // Set click action for the button
-        remoteViews.setOnClickPendingIntent(R.id.notificationButtonFoo, counterButtonPendingIntent)
+        remoteViews.setOnClickPendingIntent(R.id.notificationButtonFoo, screenShotButtonPendingIntent)
         remoteViews.setOnClickPendingIntent(R.id.deletebutton, deleteButtonPendingIntent)
         remoteViews.setOnClickPendingIntent(R.id.cloudbutton, cloudButtonPendingIntent)
 

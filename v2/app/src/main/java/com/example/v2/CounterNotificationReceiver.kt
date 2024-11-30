@@ -34,4 +34,3 @@ class CounterNotificationReceiver : BroadcastReceiver() {
         }
     }
 }
-

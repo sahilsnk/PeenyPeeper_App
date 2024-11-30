@@ -11,6 +11,7 @@ import androidx.core.app.ActivityCompat
 
 class MainActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -33,12 +34,9 @@ class MainActivity : AppCompatActivity() {
                 )
             }
         }
-        val startButton = findViewById<Button>(R.id.start_button)
-        startButton.text = "Start Service"
-        startButton.setOnClickListener {
-            service.showNotification(Counter.count)
 
-        }
+        service.showNotification(Counter.count)
+
     }
 
     companion object {
