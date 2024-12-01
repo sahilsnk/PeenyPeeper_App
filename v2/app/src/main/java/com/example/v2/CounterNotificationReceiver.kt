@@ -3,34 +3,32 @@ package com.example.v2
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 
 class CounterNotificationReceiver : BroadcastReceiver() {
-    private var temporary =  Counter.count
     override fun onReceive(context: Context, intent: Intent?) {
-        if (intent?.action == "ACTION_INCREMENT") {
-            // Increment the counter
+        when (intent?.action) {
+            "ACTION_SCREENSHOT" -> {
+                // Start the com.example.v2.com.example.v2.ScreenshotService
 
-            Counter.count++
-
-            // Update the notification with the new counter value
-            val service = CounterNotificationService(context)
-            service.showNotification(Counter.count)
-        }
-        if (intent?.action == "ACTION_DELETE") {
-            // Increment the counter
-            Counter.count = 0
-
-            // Update the notification with the new counter value
-            val service = CounterNotificationService(context)
-            service.showNotification(Counter.count)
-        }
-        if (intent?.action == "ACTION_STORE") {
-            // Increment the counter
-            temporary  = Counter.count
-
-            // Update the notification with the new counter value
-            val service = CounterNotificationService(context)
-            service.showNotification(Counter.count)
+                val screenshotIntent = Intent(context, ScreenshotService::class.java)
+                context.startService(screenshotIntent)
+                Log.d(this.javaClass.simpleName, "onReceive: done")
+            }
+            "ACTION_INCREMENT" -> {
+                Counter.count++
+                // Handle increment action
+            }
+            "ACTION_DELETE" -> {
+                Counter.count = 0
+                val service = CounterNotificationService(context)
+                service.showNotification(Counter.count)
+            }
+            "ACTION_STORE" -> {
+                val temporary = Counter.count
+                val service = CounterNotificationService(context)
+                service.showNotification(temporary)
+            }
         }
     }
 }

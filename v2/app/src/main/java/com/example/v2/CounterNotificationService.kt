@@ -20,7 +20,7 @@ class CounterNotificationService(private val context : Context) {
 
         // Intent for handling button click
         val screenShotButtonIntent = Intent(context, CounterNotificationReceiver::class.java).apply {
-            action = "ACTION_INCREMENT"
+            action = "ACTION_SCREENSHOT"
         }
         val screenShotButtonPendingIntent = PendingIntent.getBroadcast(
             context,
@@ -46,15 +46,12 @@ class CounterNotificationService(private val context : Context) {
             cloudButtonIntent,
             PendingIntent.FLAG_IMMUTABLE
         )
-
         // Inflate the custom layout
         val remoteViews = RemoteViews(context.packageName, R.layout.custom_notification_layout_one)
-
         // Set the updated counter value in the notification layout
         remoteViews.setTextViewText(R.id.textViewCounter, "Counter: $counter")
-
         // Set click action for the button
-        remoteViews.setOnClickPendingIntent(R.id.notificationButtonFoo, screenShotButtonPendingIntent)
+        remoteViews.setOnClickPendingIntent(R.id.screenShotButton, screenShotButtonPendingIntent)
         remoteViews.setOnClickPendingIntent(R.id.deletebutton, deleteButtonPendingIntent)
         remoteViews.setOnClickPendingIntent(R.id.cloudbutton, cloudButtonPendingIntent)
 
